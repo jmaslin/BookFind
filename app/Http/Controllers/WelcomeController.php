@@ -1,4 +1,4 @@
-<?php namespace App\Http\Controllers;
+<?php namespace Bookfind\Http\Controllers;
 
 class WelcomeController extends Controller {
 
@@ -30,7 +30,12 @@ class WelcomeController extends Controller {
 	 */
 	public function index()
 	{
-		return view('welcome');
+		return view('hello');
+	}
+
+	public function register()
+	{
+		return view('/auth/register');
 	}
 
 }
