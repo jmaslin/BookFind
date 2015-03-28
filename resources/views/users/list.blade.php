@@ -5,15 +5,15 @@
 	<div class="row">
 		<div class="col-md-10 col-md-offset-1">
 			<div class="panel panel-default">
-				<div class="panel-heading">Books</div>
+				<div class="panel-heading">Users</div>
 
 				<div class="panel-body">
-					@if (!$books->count())
-						No books exist yet.
+					@if (!$users->count())
+						No users exist yet.
 					@else
 						<ul>
-							@foreach($books as $book)
-								<li><a href="{{ route('books.show', $book->id) }}">{{ $book->name }}</a></li>
+							@foreach($users as $user)
+								<li><a href="{{ route('users.show', $user->id) }}">{{ $user->name }}</a></li>
 							@endforeach
 						</ul>
 					@endif	

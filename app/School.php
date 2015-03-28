@@ -24,4 +24,9 @@ class School extends Model {
 	 * @var array
 	 */
 
+	public function students()
+	{
+		return $this->hasMany('Bookfind\User');
+	}
+
 }

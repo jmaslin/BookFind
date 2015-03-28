@@ -26,10 +26,12 @@ Route::get('books', 'BooksController@index');
 
 Route::model('schools', '\Bookfind\School');
 Route::model('books', '\Bookfind\Book');
+Route::model('users', '\Bookfind\User');
 
 // Route::resource('schools.books', 'BooksController');
 Route::resource('schools', 'SchoolsController');
 Route::resource('books', 'BooksController');
+Route::resource('users', 'UsersController');
 
 // Route::bind('books', function($value, $route) {
 // 	return Bookfind\Book::where('isbn', $value)->first();
