@@ -1,6 +1,8 @@
 <?php namespace Bookfind\Services;
 
 use Bookfind\User;
+use Bookfind\School;
+
 use Validator;
 use Illuminate\Contracts\Auth\Registrar as RegistrarContract;
 
@@ -29,15 +31,19 @@ class Registrar implements RegistrarContract {
 	 */
 	public function create(array $data)
 	{
-	  $domain = substr($data['email'], strpos($data['email'], "@")+1);
-	  echo $domain. " ";
-	  echo substr($domain, 0, strpos($domain, "."));
-		die;
+	  $school_domain = substr($data['email'], strpos($data['email'], "@")+1);
+	  $school_name = substr($school_domain, 0, strpos($school_domain, "."));
+
+	  $school = School::firstOrCreate([
+	  	'name' => $school_name,
+	  	'domain' => $school_domain
+	  ]);
 
 		return User::create([
 			'name' => $data['name'],
 			'email' => $data['email'],
 			'password' => bcrypt($data['password']),
+			'school_id' => $school['id']
 		]);
 	}
 

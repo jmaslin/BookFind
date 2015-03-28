@@ -51,9 +51,17 @@ class SchoolsController extends Controller {
 	 */
 	public function show(School $school)
 	{
-		$books = Book::all();
 
-		return view('schools.profile', ['school' => $school, 'books' => $books]);
+		if (School::where('id', '=', $school['id'])->first() == null) 
+		{
+			abort(404);
+		}
+		else 
+		{
+			$books = Book::all();
+			return view('schools.profile', ['school' => $school, 'books' => $books]);
+		}
+
 	}
 
 	/**

@@ -32,8 +32,12 @@ Route::resource('schools', 'SchoolsController');
 Route::resource('books', 'BooksController');
 
 // Route::bind('books', function($value, $route) {
-// 	return App\Book::whereSlug($value)->first();
+// 	return Bookfind\Book::where('isbn', $value)->first();
 // });
+
+Route::bind('schools', function($value, $route) {
+	return Bookfind\School::where('domain', $value)->first();
+});
 
 // Route::bind('schools', function($value, $route) {
 // 	return Bookfind\School::where('name', $value)->first();

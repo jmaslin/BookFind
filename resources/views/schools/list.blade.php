@@ -13,7 +13,7 @@
 					@else
 						<ul>
 							@foreach($schools as $school)
-								<li><a href="{{ route('schools.show', $school->id) }}">{{ $school->name }}</a></li>
+								<li><a href="{{ route('schools.show', $school->domain) }}">{{ $school->name }}</a></li>
 							@endforeach
 						</ul>
 					@endif	

@@ -3,7 +3,8 @@
 use Bookfind\Http\Requests;
 use Bookfind\Http\Controllers\Controller;
 
-use Illuminate\Http\Request;
+// use Illuminate\Http\Request;
+use Request;
 
 use \Bookfind\Book;
 
@@ -16,7 +17,7 @@ class BooksController extends Controller {
 	 */
 	public function index()
 	{
-		$books = Book::all();
+		$books = Book::all(); // Temporary
 
 		return view('books.list', ['books' => $books]);
 	}
@@ -27,8 +28,10 @@ class BooksController extends Controller {
 	 * @return Response
 	 */
 	public function create()
-	{
-		//
+	{	
+		$book = new Book;
+
+		return view('books.create', ['book' => $book]);
 	}
 
 	/**
@@ -49,6 +52,7 @@ class BooksController extends Controller {
 	 */
 	public function show(Book $book)
 	{
+		// $creator = Book::find($book->id)->creator;
 
 		return view('books.profile', ['book' => $book]);
 	}
@@ -59,10 +63,14 @@ class BooksController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit($id)
+
+	public function edit(Book $book)
 	{
-		//
+		$book = Book::findOrFail($book->id);
+
+		return view('books.edit', ['book' => $book]);
 	}
+
 
 	/**
 	 * Update the specified resource in storage.
@@ -70,9 +78,14 @@ class BooksController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update(Book $book)
 	{
-		//
+		$book = Book::findOrFail($book->id);
+
+		$book->fill(Request::all());
+		$book->save();
+
+		return view('books.profile', ['book' => $book]);
 	}
 
 	/**

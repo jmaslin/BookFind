@@ -13,7 +13,7 @@
 					@else
 						<ul>
 							@foreach($books as $book)
-								<li><a href="{{ route('books.show', $book->id) }}">{{ $book->name }}</a></li>
+								<li><a href="{{ route('books.show', $book->isbn) }}">{{ $book->name }}</a></li>
 							@endforeach
 						</ul>
 					@endif	
