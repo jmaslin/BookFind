@@ -33,9 +33,4 @@ class WelcomeController extends Controller {
 		return view('hello');
 	}
 
-	public function register()
-	{
-		return view('/auth/register');
-	}
-
 }

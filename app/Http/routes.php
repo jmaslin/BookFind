@@ -11,13 +11,30 @@
 |
 */
 
-Route::get('/', 'WelcomeController@index');
+// Route::get('/', 'WelcomeController@index');
+Route::get('/', 'HomeController@index');
 
 Route::get('home', 'HomeController@index');
-
-Route::get('register', 'WelcomeController@register');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
+
+Route::get('schools', 'SchoolsController@index');
+Route::get('books', 'BooksController@index');
+
+Route::model('schools', '\Bookfind\School');
+Route::model('books', '\Bookfind\Book');
+
+// Route::resource('schools.books', 'BooksController');
+Route::resource('schools', 'SchoolsController');
+Route::resource('books', 'BooksController');
+
+// Route::bind('books', function($value, $route) {
+// 	return App\Book::whereSlug($value)->first();
+// });
+
+// Route::bind('schools', function($value, $route) {
+// 	return Bookfind\School::where('name', $value)->first();
+// });

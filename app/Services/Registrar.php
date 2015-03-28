@@ -29,6 +29,11 @@ class Registrar implements RegistrarContract {
 	 */
 	public function create(array $data)
 	{
+	  $domain = substr($data['email'], strpos($data['email'], "@")+1);
+	  echo $domain. " ";
+	  echo substr($domain, 0, strpos($domain, "."));
+		die;
+
 		return User::create([
 			'name' => $data['name'],
 			'email' => $data['email'],
