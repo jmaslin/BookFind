@@ -1,0 +1,48 @@
+BookFind
+
+Find PDFs for specific classes, or upload them (and vote if valid).
+
+Requirements:
+
+- User accounts based on .edu emails.
+  - Based on email, allowed to access University-specific classes.
+    - v1 just for Drexel
+- Uploaded books will be tagged based on associated classes, book name, ISBN, edition, etc.
+  - Look into the legality of hosting books
+- Users can mark PDF as helpful, spam/other, used in X class (select from list)
+- Search by class name, subject, or book
+- Uploading a (verified) PDF gives you credit
+  - Verified: moderator approved or voted on >5 times + valid
+- Approved community moderators or uploaders (ie. once 2+ verified PDFs, future uploads do not need as much verification, or higher disapproving marking ratio to be removed. Instead of 25% voting its bad, make it 50%.)
+  - Imp. to note that bad and no longer irrelevant are separate.
+    - If voted irrelevant, still avail, but notice that X class/professor does not accept it.
+
+Database Tables:
+
+Users (user_id, user_email, user_pass, user_register_time, user_school, user_type)
+Schools (school_id, school_name, school_
+Classes (class_id, school_id, instructor_id)
+Books (book_id, book_name, book_isbn, uploader_user_id, book_uploaded_time)
+Ratings (rating_id, book_id, user_id, rating_code, rating_time)
+
+BookAssociation(book_id, school_id, class_id)
+
+Priority List
+
+- DB creation
+- User setup
+- Upload process
+- Associate process
+- Search process
+- Rating process
+- Make it pretty
+
+Objective: Simple book search. Easy.
+
+Technologies: PHP, MySQL, Bootstrap, Javascript
+
+Priority List (Simplify)
+
+- Design
+- Implement
+- Laravel
