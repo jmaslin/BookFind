@@ -7,36 +7,34 @@
 	<div class="row">
 		<div class="col-md-10 col-md-offset-1">
 			<div class="panel panel-primary">
-				<div class="panel-heading">
-					<h3>Hello, {{ $user->name }} <!-- <small>User Information</small> --></h3>
+				<div class="panel-heading text-center">
+					<h1>Welcome, <strong>{{ $user->name }}</strong> <!-- <small>User Information</small> --></h1>
 				</div>
 				<div class="panel-body" role="tabpanel">
 					<div class="row">
-						<div class="col-md-6">
-							<ul id="top-nav" class="nav nav-pills" role="tablist">
+						<div class="col-sm-12 lead">
+							<ul id="top-nav" class="nav nav-pills nav-justified" role="tablist">
 								<li role="presentation" class="active"><a aria-controls="courses" role="tab" data-toggle="pill" href="#courses">Courses</a></li>
 								<li role="presentation"><a aria-controls="books" role="tab" data-toggle="pill" href="#books">Books</a></li>
 								<li role="presentation"><a aria-controls="settings" role="tab" data-toggle="pill" href="#settings">Settings</a></li>
 							</ul>
 						</div>
+						<div class="col-sm-12">
+							<!-- <hr> -->
+						</div>
 					</div>
 
-					<div class="row">
-						<hr>
-					</div>
-
-					
 					<div class="tab-content row">
 						<!-- Courses -->
 						<div role="tabpanel" id="courses" class="tab-pane fade in active">
 							<div class="col-sm-6">
-								<h1>Courses</h1>
+								<h1>Active Courses</h1>
 									<ul id="courses-list" class="list-group">
-									@if (!isset($user->courses) || !$user->courses->count())
+									@if (!$user->courses->count())
 										<p>You have no courses yet - <a href="#">add one</a>!</p>
 									@else
 										@foreach($user->courses as $course)
-											<li class=list-group-item><a href="{{-- route('courses.show', $course->id) --}}">{{-- $course->name --}}</a></li>
+											<li class=list-group-item><a href="{{ route('schools.courses.show', [$user->school->id, $course->info->id]) }}">{{ $course->info->name }}</a></li>
 										@endforeach
 									@endif
 								</ul>							
@@ -45,7 +43,7 @@
 						<!-- Books -->
 						<div role="tabpanel" id="books" class="tab-pane fade">
 							<div class="col-sm-6">
-								<h1>Books</h1>
+								<h1>Uploaded Books</h1>
 								<ul id="books-list" class="list-group">
 									@if (!$user->books->count())
 										<li>No Books</li>

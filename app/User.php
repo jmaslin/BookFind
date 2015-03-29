@@ -36,5 +36,14 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 		return $this->hasMany('Bookfind\Book', 'uploader_id');
 	}
 
+	public function courses()
+	{
+		return $this->hasMany('Bookfind\User_Course', 'user_id');
+	}
+
+	public function school()
+	{
+		return $this->hasOne('Bookfind\School', 'id', 'school_id');
+	}
 
 }
