@@ -11,6 +11,17 @@ use \Bookfind\Book;
 class SchoolsController extends Controller {
 
 	/**
+	 * Create a new controller instance.
+	 *
+	 * @return void
+	 */
+	public function __construct()
+	{
+		$this->middleware('auth');
+
+	}
+	
+	/**
 	 * Display a listing of the resource.
 	 *
 	 * @return Response
@@ -58,8 +69,7 @@ class SchoolsController extends Controller {
 		}
 		else 
 		{
-			$books = Book::all();
-			return view('schools.profile', ['school' => $school, 'books' => $books]);
+			return view('schools.profile', ['school' => $school]);
 		}
 
 	}

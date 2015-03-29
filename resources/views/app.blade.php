@@ -34,6 +34,9 @@
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					<li><a href="{{ url('/') }}">Home</a></li>
+					<li><a href="{{ url('/schools') }}">Schools</a></li>
+					<li><a href="{{ url('/books') }}">Books</a></li>
+					<li><a href="{{ url('/users') }}">Users</a></li>
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
@@ -58,5 +61,10 @@
 	<!-- Scripts -->
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
+
+	@yield('scripts')
+
+
 </body>
 </html>

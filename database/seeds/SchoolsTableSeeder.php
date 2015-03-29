@@ -10,7 +10,7 @@ class SchoolsTableSeeder extends Seeder {
         DB::table('schools')->delete();
  
         $projects = array(
-            ['id' => 1, 'name' => 'Drexel', 'domain' => 'drexel.edu', 'created_at' => new DateTime, 'updated_at' => new DateTime]
+            ['id' => 1, 'name' => 'Drexel University', 'domain' => 'drexel.edu', 'created_at' => new DateTime, 'updated_at' => new DateTime]
         );
  
         // Uncomment the below to run the seeder

@@ -17,9 +17,11 @@
 					<ul>
 						<li>ISBN: {{ $book->isbn }}</li>
 						<li>Uploaded By: {{ $book->creator->name }}</li>
-						<li>Date: {{ $book->updated_at }}</li>
+						<li>Date: <span id="date">{{ $book->updated_at }}</span></li>
 						<!-- Preview, Relevant Classes for X School, Rating -->
 					</ul>
+
+				<embed id="pdfdata" src="{{ $book->url }}" type="application/pdf" width="100%" height="600px"></embed>
 
 					<br>
 					{!! link_to_route('books.edit', 'Edit Book', $book->id) !!}
@@ -30,4 +32,18 @@
 		</div>
 	</div>
 </div>
+
+
+@endsection
+
+@section('scripts')
+
+<script type="text/javascript">
+		
+	$('#date').html(function() {
+		return moment($(this).html(), 'YYYY-MM-DD HH:mm:ss').format('MMMM DD, YYYY');
+	});
+
+</script>
+
 @endsection

@@ -8,9 +8,19 @@
 				<div class="panel-heading">{{ $school->name }} <small>School Profile</small></div>
 
 				<div class="panel-body">
-					@foreach($books as $book)
-						<li><a href="{{ route('books.show', $book->id) }}">{{ $book->name }}</a></li>
-					@endforeach
+					<h4>
+						@if(!$school->books->count())
+							No books yet.
+						@else
+							Total Books: {{ $school->books->count() }}
+					</h4>
+					<hr>
+							<ul>
+							@foreach($school->books as $book)
+								<li><a href="{{ route('books.show', $book->id) }}">{{ $book->name }}</a></li>
+							@endforeach
+							</ul>
+						@endif
 				</div>
 
 			</div>

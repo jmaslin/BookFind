@@ -10,7 +10,11 @@ class BooksTableSeeder extends Seeder {
         DB::table('books')->delete();
  
         $projects = array(
-            ['id' => 1, 'name' => 'Accounting', 'isbn' => '0123450', 'uploader_id' => '1', 'created_at' => new DateTime, 'updated_at' => new DateTime]
+            ['id' => 1, 'name' => 'Resume', 
+             'isbn' => '000001', 
+             'uploader_id' => '1', 
+             'url' => 'http://www.justinmaslin.com/JustinMaslin.pdf',
+             'created_at' => new DateTime, 'updated_at' => new DateTime]
         );
  
         // Uncomment the below to run the seeder

@@ -6,8 +6,31 @@ use Bookfind\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use \Bookfind\User;
+use Auth;
+	
+function isProperGroup() 
+{
+	if ( Auth::user()->user_type_id == '11')
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
 
 class UsersController extends Controller {
+
+	/**
+	 * Create a new controller instance.
+	 *
+	 * @return void
+	 */
+	public function __construct()
+	{
+		$this->middleware('auth');
+	}
 
 	/**
 	 * Display a listing of the resource.
@@ -16,7 +39,10 @@ class UsersController extends Controller {
 	 */
 	public function index()
 	{
-		return view('users.list', ['users' => User::all() ]);
+		if (isProperGroup())
+			return view('users.list', ['users' => User::all() ]);
+		else
+			return view('errors.418');
 	}
 
 	/**

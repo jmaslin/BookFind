@@ -29,4 +29,9 @@ class School extends Model {
 		return $this->hasMany('Bookfind\User');
 	}
 
+	public function books()
+	{
+		return $this->hasManyThrough('Bookfind\Book', 'Bookfind\User', 'school_id', 'uploader_id');
+	}
+
 }

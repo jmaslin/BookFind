@@ -2,6 +2,10 @@
 
 @section('content')
 <div class="container-fluid">
+	<div class="row text-center">
+		<h2>You need to login before proceeding. <small>It's free!</small></h2>
+		<br>
+	</div>
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
 			<div class="panel panel-default">
@@ -17,7 +21,6 @@
 							</ul>
 						</div>
 					@endif
-
 					<form class="form-horizontal" role="form" method="POST" action="{{ url('/auth/login') }}">
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
 

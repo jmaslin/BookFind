@@ -35,7 +35,7 @@ class Registrar implements RegistrarContract {
 	  $school_name = substr($school_domain, 0, strpos($school_domain, "."));
 
 	  $school = School::firstOrCreate([
-	  	'name' => $school_name,
+	  	'name' => camel_case($school_name),
 	  	'domain' => $school_domain
 	  ]);
 
@@ -43,7 +43,8 @@ class Registrar implements RegistrarContract {
 			'name' => $data['name'],
 			'email' => $data['email'],
 			'password' => bcrypt($data['password']),
-			'school_id' => $school['id']
+			'school_id' => $school['id'],
+			'user_type_id' => '0'
 		]);
 	}
 
