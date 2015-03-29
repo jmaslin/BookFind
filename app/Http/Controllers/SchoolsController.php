@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use \Bookfind\School;
 use \Bookfind\Book;
 
+use Auth;
+
 class SchoolsController extends Controller {
 
 	/**
@@ -29,9 +31,17 @@ class SchoolsController extends Controller {
 
 	public function index()
 	{
-		$schools = School::all();
-
-		return view('schools.list', ['schools' => $schools]);
+		if (isProperGroup())
+		{
+			$schools = School::all();
+			return view('schools.list', ['schools' => $schools]);
+		}
+		else {
+			$school = School::find(Auth::user()->school_id);
+			return redirect()->action('SchoolsController@show', ['school' => $school]);
+		}
+		// else
+		// 	return redirect()->action('HomeController@auth');
 	}
 
 	/**
@@ -67,10 +77,12 @@ class SchoolsController extends Controller {
 		{
 			abort(404);
 		}
-		else 
+		else if (Auth::user()->school_id == $school->id)
 		{
 			return view('schools.profile', ['school' => $school]);
 		}
+		else
+			return redirect()->action('HomeController@auth');		
 
 	}
 
@@ -107,4 +119,16 @@ class SchoolsController extends Controller {
 		//
 	}
 
+}
+
+function isProperGroup() 
+{
+	if ( Auth::user()->user_type_id == '100')
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
 }

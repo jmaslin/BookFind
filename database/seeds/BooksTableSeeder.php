@@ -21,7 +21,19 @@ class BooksTableSeeder extends Seeder {
              'uploader_id' => '1', 
              'url' => 'https://isotropic.org/papers/chicken.pdf',
              'created_at' => new DateTime, 'updated_at' => new DateTime,
-             'course_id' => '1']    
+             'course_id' => '2'],
+             ['id' => 3, 'name' => 'Potato Potato Potato', 
+             'isbn' => '000003', 
+             'uploader_id' => '2', 
+             'url' => 'https://isotropic.org/papers/chicken.pdf',
+             'created_at' => new DateTime, 'updated_at' => new DateTime,
+             'course_id' => '3'],
+            ['id' => 4, 'name' => 'Bark Bark Bark', 
+             'isbn' => '0000024', 
+             'uploader_id' => '2', 
+             'url' => 'https://isotropic.org/papers/chicken.pdf',
+             'created_at' => new DateTime, 'updated_at' => new DateTime,
+             'course_id' => '4']                                
         );
  
         // Uncomment the below to run the seeder

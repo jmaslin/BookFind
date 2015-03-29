@@ -34,9 +34,9 @@
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					<li><a href="{{ url('/') }}">Home</a></li>
-					<li><a href="{{ url('/schools') }}">Schools</a></li>
-					<li><a href="{{ url('/courses') }}">Courses</a></li>
-					<li><a href="{{ url('/books') }}">Books</a></li>
+					<li><a href="{{ url('/schools') }}">School Home</a></li>
+					<li><a href="{{ url('/courses') }}">Course List</a></li>
+					<li><a href="{{ url('/books') }}">Book List</a></li>
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
@@ -47,6 +47,7 @@
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
+								<li><a href="{{ url('/profile') }}">Profile</a></li>
 								<li><a href="{{ url('/auth/logout') }}">Logout</a></li>
 							</ul>
 						</li>

@@ -1,5 +1,13 @@
 <?php namespace Bookfind\Http\Controllers;
 
+use Bookfind\Http\Requests;
+use Bookfind\Http\Controllers\Controller;
+
+use Illuminate\Http\Request;
+
+use \Bookfind\School;
+use Auth;
+
 class HomeController extends Controller {
 
 	/*
@@ -21,7 +29,6 @@ class HomeController extends Controller {
 	public function __construct()
 	{
 		$this->middleware('auth');
-
 	}
 
 	/**
@@ -31,7 +38,9 @@ class HomeController extends Controller {
 	 */
 	public function index()
 	{
-		return view('home');
+		$school = School::find(Auth::user()->school_id);
+
+		return redirect()->action('SchoolsController@show', ['school' => $school]);
 	}
 
 	public function auth()

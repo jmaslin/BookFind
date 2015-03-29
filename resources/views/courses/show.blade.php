@@ -14,7 +14,7 @@
 					@else
 						<ul>
 							@foreach($course->books as $book)
-								<li><a href="{{ route('schools.courses.books.show', [$book->id, $course->id, $school->id]) }}">{{ $book->name }}</a></li>
+								<li><a href="{{ route('schools.courses.books.show', [$school->id, $course->id, $book->id]) }}">{{ $book->name }}</a></li>
 							@endforeach
 						</ul>
 					@endif	

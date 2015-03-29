@@ -15,6 +15,11 @@ class UsersTableSeeder extends Seeder {
              'password' => '$2y$10$ssqIJLYWVZuriMG3VaSDEuIcIccFqNBJmjZvxMGGgcvLn6uFmDBm2',
              'school_id' => '1', 
              'created_at' => new DateTime, 'updated_at' => new DateTime],     
+            ['id' => 2, 'name' => 'Bob', 
+             'email' => 'bob@temple.edu', 
+             'password' => '$2y$10$ssqIJLYWVZuriMG3VaSDEuIcIccFqNBJmjZvxMGGgcvLn6uFmDBm2',
+             'school_id' => '2', 
+             'created_at' => new DateTime, 'updated_at' => new DateTime],                
         );
  
         // Uncomment the below to run the seeder

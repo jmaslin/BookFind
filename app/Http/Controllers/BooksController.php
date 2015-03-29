@@ -32,8 +32,16 @@ class BooksController extends Controller {
 	 */
 	public function index()
 	{
-		$books = Book::all(); // Temporary
-
+		if (isProperGroup())
+		{
+			$books = Book::all(); // Temporary
+			// return view('books.list', ['books' => $books]);
+		}
+		else
+		{
+			$school = School::find(Auth::user()->school_id);
+			$books = $school->books;	
+		}
 		return view('books.list', ['books' => $books]);
 	}
 
@@ -123,4 +131,16 @@ class BooksController extends Controller {
 		//
 	}
 
+}
+
+function isProperGroup() 
+{
+	if ( Auth::user()->user_type_id == '100')
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
 }
