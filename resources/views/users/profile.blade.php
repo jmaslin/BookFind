@@ -12,7 +12,7 @@
 				</div>
 				<div class="panel-body" role="tabpanel">
 					<div class="row">
-						<div class="col-sm-12 lead">
+						<div class="col-sm-10 col-sm-offset-1 lead">
 							<ul id="top-nav" class="nav nav-pills nav-justified" role="tablist">
 								<li role="presentation" class="active"><a aria-controls="courses" role="tab" data-toggle="pill" href="#courses">Courses</a></li>
 								<li role="presentation"><a aria-controls="books" role="tab" data-toggle="pill" href="#books">Books</a></li>
@@ -20,15 +20,21 @@
 							</ul>
 						</div>
 						<div class="col-sm-12">
-							<!-- <hr> -->
+							<hr>
 						</div>
 					</div>
 
 					<div class="tab-content row">
 						<!-- Courses -->
 						<div role="tabpanel" id="courses" class="tab-pane fade in active">
+							<div class="col-sm-6 col-sm-offset-3">
+								<ul class="nav nav-pills nav-justified">
+									<li role="presentation" class="active"><a href="#active">Active</a></li>
+									<li role="presentation"><a href="#active">Archived</a></li>
+								</ul>
+							</div>
 							<div class="col-sm-6">
-								<h1>Active Courses</h1>
+								<h2>Active Courses</h2>
 									<ul id="courses-list" class="list-group">
 									@if (!$user->courses->count())
 										<p>You have no courses yet - <a href="#">add one</a>!</p>
@@ -42,8 +48,15 @@
 						</div>
 						<!-- Books -->
 						<div role="tabpanel" id="books" class="tab-pane fade">
+							<div class="col-sm-6 col-sm-offset-3">
+								<ul class="nav nav-pills nav-justified">
+									<!-- <li role="presentation" class="active"><a href="#active">Active</a></li> -->
+									<li role="presentation"><a href="#wanted">Wanted</a></li>
+									<li role="presentation"><a href="#uploaded">Uploaded</a></li>
+								</ul>
+							</div>
 							<div class="col-sm-6">
-								<h1>Uploaded Books</h1>
+								<h2>Added Books</h2>
 								<ul id="books-list" class="list-group">
 									@if (!$user->books->count())
 										<li>No Books</li>
@@ -57,8 +70,14 @@
 						</div>
 						<!-- Settings -->
 						<div role="tabpanel" id="settings" class="tab-pane fade">
-							<div class="col-sm-6">
-								<h1>Settings</h1>
+							<div class="col-sm-6 col-sm-offset-3">
+								<ul class="nav nav-pills nav-justified">
+									<li role="presentation"><a href="#preferences">Preferences</a></li>
+									<li role="presentation"><a href="#account">Information</a></li>
+								</ul>
+							</div>
+							<div class="col-sm-6">								
+								<h2>Preferences</h2>
 
 							</div>
 						</div>
