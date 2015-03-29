@@ -32,18 +32,46 @@
 									<li role="presentation" class="active"><a href="#active">Active</a></li>
 									<li role="presentation"><a href="#active">Archived</a></li>
 								</ul>
+								<br>
 							</div>
 							<div class="col-sm-6">
 								<h2>Active Courses</h2>
-									<ul id="courses-list" class="list-group">
+									<div id="courses-list" class="list-group">
 									@if (!$user->courses->count())
-										<p>You have no courses yet - <a href="#">add one</a>!</p>
+								  	<a href="#" class="list-group-item list-group-item-info">You have not added any courses!</a>
 									@else
 										@foreach($user->courses as $course)
-											<li class=list-group-item><a href="{{ route('schools.courses.show', [$user->school->id, $course->info->id]) }}">{{ $course->info->name }}</a></li>
+											<a href="#course{{ $course->info->id }}" data-target="{{ route('schools.courses.show', [$user->school->id, $course->info->id]) }}" data-books-available="{{ $course->info->books->count() }}" class="list-group-item">
+												{{ $course->info->name }} <span class="badge">{{ $course->info->shortcode }}</span>
+											</a>
 										@endforeach
+											<a href="#" class="list-group-item">
+												<div class="input-group">
+													<input name="course" type="text" class="form-control" placeholder="Class Name">
+													<span class="input-group-btn"><button type="submit" class="btn btn-success">Add</button></span>
+												</div>
+											</a>
 									@endif
-								</ul>							
+								</div>
+							</div>
+							<div class="col-sm-4 col-sm-offset-1">
+								<h2>Course Details</h2>
+
+								<div class="panel panel-info">
+									<div class="panel panel-heading">
+										<span id="course-title">No Course Selected</span>
+									</div>
+									<div class="panel-body">
+											<p id="course-info">
+												<span data-first="1" id="course-info-pretext">Choose a course to display its information.</span>
+												<span id="course-books-status"></span>
+											</p>
+											<div id="course-btn-group">
+												<a id="course-home" href="#" class="btn btn-info btn-block" role="button">Course Homepage</a>											
+												<a id="course-archive" href="#" class="btn btn-warning btn-block" role="button">Archive Course</a>
+											</div>
+									</div>
+								</div>
 							</div>
 						</div>
 						<!-- Books -->
@@ -97,14 +125,61 @@
 
 <script type="text/javascript">
 
-	// $('.profile-category').hide();
+	$('.course-dropdown-info').hide();
+	// $('#course-btn-group').children('a').fadeTo('0.5').attr('disabled', 'disabled');
+	$('#course-btn-group').hide();
 
-	// $('#top-nav li').click('a', function (e) {
-	//   e.preventDefault()
-	//   $(this).tab('show')
+	// user selects course from list
+	$('#courses-list a').click(function(e) {
 
-	//   console.log($(this).html());
-	// })
+		var courseTitle = $(this).clone().children().remove().end().text().trim();
+		var courseBookAvailable = $(this).attr('data-books-available');
+
+		var course = { title: courseTitle, bookAvailable: courseBookAvailable };
+
+		// update book status pretext for first time
+		if ($('#course-info-pretext').attr('data-first') == '1') {
+
+			$('#course-info-pretext').attr('data-first', '0');
+
+			$('#course-info-pretext').fadeToggle(function() {
+				$(this).text("Books Available: ");
+				$(this).fadeToggle();
+				$('#course-btn-group').fadeToggle();
+				updateCourseInfo($(this), course);
+			});
+
+			// enable buttons
+			// $('#course-btn-group').children('a').fadeTo('fast', '1').attr('disabled', false);
+		}
+		else {
+			updateCourseInfo($(this), course);
+		}
+
+
+
+	});
+
+	function updateCourseInfo(thisObj, course) {
+		// if the class is different from previous selection, update panel
+		if ($('#course-title').text() != course.title) {
+
+			// change title
+			$('#course-title').fadeToggle(function() {
+				$(this).text(course.title);
+				$(this).fadeToggle();
+			});
+
+			// update book status
+			$('#course-books-status').fadeToggle(function() {
+				$(this).html('<span class="badge">'+course.bookAvailable+'</span>');
+				$(this).fadeToggle();
+			});
+
+			// update link to course
+			$('#course-btn-group a#course-home').attr('href', thisObj.attr('data-target'));
+		}
+	}
 
 </script>
 
