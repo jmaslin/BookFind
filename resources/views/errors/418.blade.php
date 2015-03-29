@@ -39,8 +39,8 @@
 	<body>
 		<div class="container">
 			<div class="content">
-				<div class="title">Hey, that page is secret!</div>
-				<div class="subtext">Oops. Just kidding?</div>
+				<div class="title">Hey, you cannot go there!</div>
+				<div class="subtext">Or maybe you can. I'm just an error message.</div>
 			</div>
 		</div>
 	</body>

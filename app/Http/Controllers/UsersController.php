@@ -8,17 +8,6 @@ use Illuminate\Http\Request;
 use \Bookfind\User;
 use Auth;
 	
-function isProperGroup() 
-{
-	if ( Auth::user()->user_type_id == '11')
-	{
-		return true;
-	}
-	else
-	{
-		return false;
-	}
-}
 
 class UsersController extends Controller {
 
@@ -43,7 +32,7 @@ class UsersController extends Controller {
 		if (isProperGroup())
 			return view('users.list', ['users' => User::all() ]);
 		else
-			return view('errors.418');
+			return redirect()->action('HomeController@auth');
 	}
 
 	/**
@@ -54,7 +43,12 @@ class UsersController extends Controller {
 	 */
 	public function show(User $user)
 	{
-		return view('users.profile', ['user' => $user]);
+
+		// if ($user->id == Auth::user()->id) 
+		if (isProperGroup()) 
+			return view('users.profile', ['user' => $user]);
+		else
+			return redirect()->action('HomeController@auth');	
 	}
 
 	/**
@@ -63,9 +57,12 @@ class UsersController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit($id)
+	public function edit(User $user)
 	{
-		//
+		if (isProperGroup()) 	
+			return view('users.edit', ['user' => $user]);
+		else
+			return redirect()->action('HomeController@auth');	
 	}
 
 	/**
@@ -76,9 +73,20 @@ class UsersController extends Controller {
 	 */
 	public function update($id)
 	{
-		//
+		return redirect('home');
 	}
 
+	public function profile()
+	{
+		$user = User::find(Auth::user()->id);
+		return view('users.profile', ['user' => $user]);
+	}
+
+	public function editProfile()
+	{
+		$user = User::find(Auth::user()->id);
+		return view('users.edit', ['user' => $user]);
+	}
 	/**
 	 * Remove the specified resource from storage.
 	 *
@@ -90,4 +98,17 @@ class UsersController extends Controller {
 	// 	//
 	// }
 
+
+}
+
+function isProperGroup() 
+{
+	if ( Auth::user()->user_type_id == '100')
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
 }

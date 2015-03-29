@@ -29,12 +29,18 @@
 				font-size: 72px;
 				margin-bottom: 40px;
 			}
+
+			.subtext {
+				font-size: 24px;
+			}
+
 		</style>
 	</head>
 	<body>
 		<div class="container">
 			<div class="content">
-				<div class="title">Page not found.</div>
+				<div class="title">404: page not found.</div>
+				<div class="subtext">:( </div>
 			</div>
 		</div>
 	</body>

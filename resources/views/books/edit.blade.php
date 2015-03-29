@@ -9,13 +9,11 @@
 
 				<div class="panel-body">
 
-
 					{!! Form::model($book, ['class' => 'form_horizontal', 'method' => 'PATCH', 'route' => ['books.update', $book->id] ]) !!}
 
 						@include('books/partials/_form', ['buttonText' => 'Edit'])
 
 					{!! Form::close() !!}
-
 
 				</div>
 			</div>

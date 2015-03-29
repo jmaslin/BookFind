@@ -9,12 +9,12 @@ class SchoolsTableSeeder extends Seeder {
         // Uncomment the below to wipe the table clean before populating
         DB::table('schools')->delete();
  
-        $projects = array(
+        $schools = array(
             ['id' => 1, 'name' => 'Drexel University', 'domain' => 'drexel.edu', 'created_at' => new DateTime, 'updated_at' => new DateTime]
         );
  
         // Uncomment the below to run the seeder
-        DB::table('schools')->insert($projects);
+        DB::table('schools')->insert($schools);
     }
  
 }

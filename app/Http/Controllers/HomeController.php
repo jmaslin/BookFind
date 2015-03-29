@@ -33,5 +33,10 @@ class HomeController extends Controller {
 	{
 		return view('home');
 	}
+
+	public function auth()
+	{
+		return view('errors.418');
+	}
 	
 }

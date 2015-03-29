@@ -9,16 +9,23 @@ class BooksTableSeeder extends Seeder {
         // Uncomment the below to wipe the table clean before populating
         DB::table('books')->delete();
  
-        $projects = array(
+        $books = array(
             ['id' => 1, 'name' => 'Resume', 
              'isbn' => '000001', 
              'uploader_id' => '1', 
              'url' => 'http://www.justinmaslin.com/JustinMaslin.pdf',
-             'created_at' => new DateTime, 'updated_at' => new DateTime]
+             'created_at' => new DateTime, 'updated_at' => new DateTime,
+             'course_id' => '1'],
+            ['id' => 2, 'name' => 'Chicken Chicken Chicken', 
+             'isbn' => '000002', 
+             'uploader_id' => '1', 
+             'url' => 'https://isotropic.org/papers/chicken.pdf',
+             'created_at' => new DateTime, 'updated_at' => new DateTime,
+             'course_id' => '1']    
         );
  
         // Uncomment the below to run the seeder
-        DB::table('books')->insert($projects);
+        DB::table('books')->insert($books);
     }
  
 }

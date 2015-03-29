@@ -18,12 +18,6 @@ class School extends Model {
 	 */
 	protected $fillable = ['name', 'domain'];
 
-	/**
-	 * The attributes excluded from the model's JSON form.
-	 *
-	 * @var array
-	 */
-
 	public function students()
 	{
 		return $this->hasMany('Bookfind\User');
@@ -32,6 +26,11 @@ class School extends Model {
 	public function books()
 	{
 		return $this->hasManyThrough('Bookfind\Book', 'Bookfind\User', 'school_id', 'uploader_id');
+	}
+
+	public function courses()
+	{
+		return $this->hasMany('Bookfind\Course', 'school_id');
 	}
 
 }

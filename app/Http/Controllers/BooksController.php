@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 // use Request;
 
 use \Bookfind\Book;
+use \Bookfind\Course;
+use \Bookfind\School;
 
 use Auth;
 
@@ -72,7 +74,7 @@ class BooksController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show(Book $book)
+	public function show(School $school, Course $course, Book $book)
 	{
 		// $creator = Book::find($book->id)->creator;
 

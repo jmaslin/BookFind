@@ -21,25 +21,39 @@ Route::controllers([
 	'password' => 'Auth\PasswordController',
 ]);
 
-Route::get('schools', 'SchoolsController@index');
-Route::get('books', 'BooksController@index');
+Route::get('418', 'HomeController@auth');
 
-Route::model('schools', '\Bookfind\School');
 Route::model('books', '\Bookfind\Book');
+Route::model('courses', '\Bookfind\Course');
+Route::model('schools', '\Bookfind\School');
 Route::model('users', '\Bookfind\User');
 
-// Route::resource('schools.books', 'BooksController');
-Route::resource('schools', 'SchoolsController');
 Route::resource('books', 'BooksController');
 Route::resource('users', 'UsersController');
+Route::resource('schools', 'SchoolsController');
+Route::resource('courses', 'CoursesController');
+
+Route::resource('schools.courses', 'CoursesController');
+Route::resource('schools.courses.books', 'BooksController');
+
+Route::resource('courses', 'CoursesController@showCourses');
+
+// Route::get('schools.courses.show', 'CoursesController@show');
+
+Route::get('profile', 'UsersController@profile');
+Route::get('profile/edit', 'UsersController@editProfile');
+
+Route::get('/schools/{school}/courses/{course}', 'CoursesController@show');
+Route::get('/schools/{school}/courses/{course}/books/{book}', 'BooksController@show');
+
 
 // Route::bind('books', function($value, $route) {
 // 	return Bookfind\Book::where('isbn', $value)->first();
 // });
 
-Route::bind('schools', function($value, $route) {
-	return Bookfind\School::where('domain', $value)->first();
-});
+// Route::bind('schools', function($value, $route) {
+// 	return Bookfind\School::where('domain', $value)->first();
+// });
 
 // Route::bind('schools', function($value, $route) {
 // 	return Bookfind\School::where('name', $value)->first();
