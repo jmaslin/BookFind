@@ -28,3 +28,21 @@
 	</div>
 </div>
 @endsection
+
+<!-- 
+
+Think About:
+
+- Courses with books.
+- Courses without books.
+
+- Search all courses.
+- Search all books.
+
+In the future:
+
+- Personalized class list (by term?)
+- Notifications if book added for watched class.
+- Archive formerly active classes so not alerted.
+
+ -->

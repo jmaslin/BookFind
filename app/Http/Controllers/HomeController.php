@@ -39,7 +39,6 @@ class HomeController extends Controller {
 	public function index()
 	{
 		$school = School::find(Auth::user()->school_id);
-
 		return redirect()->action('SchoolsController@show', ['school' => $school]);
 	}
 
