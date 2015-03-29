@@ -27,6 +27,7 @@ class UsersController extends Controller {
 	 *
 	 * @return void
 	 */
+
 	public function __construct()
 	{
 		$this->middleware('auth');
@@ -43,26 +44,6 @@ class UsersController extends Controller {
 			return view('users.list', ['users' => User::all() ]);
 		else
 			return view('errors.418');
-	}
-
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-		//
-	}
-
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
-	public function store()
-	{
-		//
 	}
 
 	/**
@@ -104,9 +85,9 @@ class UsersController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id)
-	{
-		//
-	}
+	// public function destroy($id)
+	// {
+	// 	//
+	// }
 
 }

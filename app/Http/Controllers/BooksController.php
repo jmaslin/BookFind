@@ -3,12 +3,25 @@
 use Bookfind\Http\Requests;
 use Bookfind\Http\Controllers\Controller;
 
-// use Illuminate\Http\Request;
-use Request;
+use Illuminate\Http\Request;
+// use Request;
 
 use \Bookfind\Book;
 
+use Auth;
+
 class BooksController extends Controller {
+
+	/**
+	 * Create a new controller instance.
+	 *
+	 * @return void
+	 */
+	public function __construct()
+	{
+		$this->middleware('auth');
+
+	}
 
 	/**
 	 * Display a listing of the resource.
@@ -39,9 +52,18 @@ class BooksController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
-	{
-		//
+	public function store(Requests\StoreBookPostRequest $request) 
+	{	
+
+		$book = Book::create([
+			'name' => ucwords($request->input('name')),
+			'isbn' => $request->input('isbn'),
+			'url' => $request->input('url'),
+			'uploader_id' => Auth::user()->id
+		]);
+
+		return view('books.profile', ['book' => $book, 'new' => 'true']);
+
 	}
 
 	/**

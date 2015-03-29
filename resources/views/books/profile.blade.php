@@ -13,7 +13,11 @@
 				</div>
 
 				<div class="panel-body">
-
+					@if (isset($new) && $new == 'true')
+						<div class="alert alert-success">
+							<strong>Woo!</strong> Your book was uploaded.
+						</div>
+					@endif
 					<ul>
 						<li>ISBN: {{ $book->isbn }}</li>
 						<li>Uploaded By: {{ $book->creator->name }}</li>
