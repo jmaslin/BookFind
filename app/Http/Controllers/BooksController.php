@@ -32,17 +32,17 @@ class BooksController extends Controller {
 	 */
 	public function index()
 	{
-		if (isProperGroup())
+		if (isProperSchool())
 		{
 			$books = Book::all(); // Temporary
-			// return view('books.list', ['books' => $books]);
 		}
 		else
 		{
 			$school = School::find(Auth::user()->school_id);
 			$books = $school->books;	
 		}
-		return view('books.list', ['books' => $books]);
+		// return view('books.list', ['books' => $books]);
+		return redirect()->action('CoursesController@index', ['school' => $school]);
 	}
 
 	/**
@@ -133,7 +133,7 @@ class BooksController extends Controller {
 
 }
 
-function isProperGroup() 
+function isProperSchool() 
 {
 	if ( Auth::user()->user_type_id == '100')
 	{

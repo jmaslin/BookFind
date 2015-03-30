@@ -31,7 +31,7 @@ class SchoolsController extends Controller {
 
 	public function index()
 	{
-		if (isProperGroup())
+		if (isProper())
 		{
 			$schools = School::all();
 			return view('schools.list', ['schools' => $schools]);
@@ -121,7 +121,7 @@ class SchoolsController extends Controller {
 
 }
 
-function isProperGroup() 
+function isProper() 
 {
 	if ( Auth::user()->user_type_id == '100')
 	{
