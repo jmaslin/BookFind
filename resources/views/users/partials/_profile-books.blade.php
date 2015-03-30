@@ -35,7 +35,7 @@
 						@foreach($user->books as $book)
 							<tr>
 								<td>{{ $book->name }}</td>
-								<td class="text-center"><a href="#" title="{{ $book->course->shortcode }}">{{ $book->course->name }}</a></td>
+								<td class="text-center"><a href="{{ route('schools.courses.show', [$book->course->school->id, $book->course->id]) }}" title="{{ $book->course->shortcode }}">{{ $book->course->name }}</a></td>
 								<td class="text-center"></td>
 								<td class="text-center"></td>
 							</tr>

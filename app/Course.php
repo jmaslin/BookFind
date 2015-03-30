@@ -20,12 +20,17 @@ class Course extends Model {
 
 	public function books()
 	{
-			return $this->hasMany('Bookfind\Book', 'course_id');
+		return $this->hasMany('Bookfind\Book', 'course_id');
 	}
 
 	public function students()
 	{
-			return $this->hasMany('Bookfind\User_Course', 'course_id');
+		return $this->hasMany('Bookfind\User_Course', 'course_id');
+	}
+
+	public function school()
+	{
+		return $this->belongsTo('Bookfind\School', 'school_id');
 	}
 
 
