@@ -43,7 +43,7 @@
 											<!-- <td class="text-center">{{ $book->updated_at }}</td> -->
 											<td class="text-center"></td>
 											<td class="text-center">
-												<a href="{{ route('schools.courses.books.show', [$school->id, $course->id, $book->id]) }}" class="btn btn-info" role="button">{{ $book->name }}</a>
+												<a href="{{ route('schools.courses.books.show', [$school->id, $course->id, $book->id]) }}" class="btn btn-info" role="button">Show Book</a>
 											</td>
 										</tr>
 									@endforeach
