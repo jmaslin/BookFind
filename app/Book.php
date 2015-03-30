@@ -11,4 +11,9 @@ class Book extends Model {
 		return $this->belongsTo('Bookfind\User', 'uploader_id');
 	}
 
+	public function course()
+	{
+		return $this->belongsTo('Bookfind\Course');
+	}
+
 }

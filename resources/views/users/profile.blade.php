@@ -25,6 +25,7 @@
 					</div>
 
 					<div class="tab-content row">
+						<div role="tabpanel" id="courses" class="tab-pane fade in active">
 						<!-- Courses -->
 							@include('users/partials/_profile-courses')
 						</div>

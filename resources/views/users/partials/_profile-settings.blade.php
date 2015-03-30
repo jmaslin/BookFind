@@ -1,3 +1,4 @@
+<!-- Settings -->
 <div class="col-sm-6 col-sm-offset-3">
 	<ul class="nav nav-pills nav-justified">
 		<li role="presentation"><a href="#preferences">Preferences</a></li>

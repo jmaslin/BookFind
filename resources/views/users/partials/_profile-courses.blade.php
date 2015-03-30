@@ -1,5 +1,4 @@
 <!-- Courses -->
-<div role="tabpanel" id="courses" class="tab-pane fade in active">
 <div class="col-sm-6 col-sm-offset-3">
 	<ul class="nav nav-pills nav-justified">
 		<li role="presentation" class="active"><a href="#active">Active</a></li>
