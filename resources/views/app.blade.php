@@ -33,7 +33,7 @@
 					<img alt="Bookfind" src="{{ asset('img/book.png') }}" width="20"> 
 				</a>
 
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-collapse">
 					<span class="sr-only">Toggle Navigation</span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
@@ -42,21 +42,33 @@
 				<a class="navbar-brand" href="#">Bookfind</a>
 			</div>
 
-			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<div class="collapse navbar-collapse" id="nav-collapse">
 				<ul class="nav navbar-nav">
 					<li><a href="{{ url('/') }}">Home</a></li>
-					<li><a href="{{ url('/schools') }}">School</a></li>
-					<li><a href="{{ url('/courses') }}">Course List</a></li>
-					<li><a href="{{ url('/books') }}">Book List</a></li>
+					<!-- <li><a href="{{ url('/schools') }}">School</a></li> -->
+					<li><a href="{{ url('/courses') }}">School Home</a></li>
+					<!-- <li><a href="{{ url('/books') }}">My Books</a></li> -->
 				</ul>
 
-				<ul class="nav navbar-nav navbar-right">
+				<!-- 
+				<ul class="navbar-form navbar-center" style="display: inline-block;">
+					<form class="form-horizontal">
+		      	<div class="input-group">
+	            <input type="text" class="form-control" placeholder="Search for books, classes, and more!" name="search" id="searchbar">
+	            <div class="input-group-btn">
+	            	<button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+	            </div>
+		      	</div>
+					</form>
+				</ul> -->
+
+				<ul class="nav navbar-nav navbar-right" style="display: inline-block;">
 					@if (Auth::guest())
 						<li><a href="{{ url('/auth/login') }}">Login</a></li>
 						<li><a href="{{ url('/auth/register') }}">Register</a></li>
 					@else
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Hi, {{ Auth::user()->name }} <span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
 								<li><a href="{{ url('/profile') }}">Profile</a></li>
 								<li><a href="{{ url('/auth/logout') }}">Logout</a></li>
@@ -64,6 +76,16 @@
 						</li>
 					@endif
 				</ul>
+
+	   		<form class="navbar-form">
+	        <div class="form-group" style="display: inline-block; width: 50%; margin-left: 10%;">
+						<div style="display: table;" class="input-group">
+	            <input type="text" autocomplete="off" placeholder="Search for courses, books, and more!" name="search" style="" class="form-control">
+	           	<span style="width: 1%;" class="input-group-addon"><a href="#"><span class="glyphicon glyphicon-search" style="color: blue;"></span></a></span>  
+	          </div>
+	        </div>
+	      </form>
+
 			</div>
 		</div>
 	</nav>
@@ -78,6 +100,18 @@
 	<script src="{{ asset('/js/bootstrap.min.js') }}"></script>
 	<script src="{{ asset('/js/moment.min.js') }}"></script>
 
+	<script type="text/javascript">
+
+		// format time when timestamp loaded from db
+		$('.time-format-dt').attr('title', function() {
+			return moment($(this).html(), 'YYYY-MM-DD HH:mm:ss').format('MMMM DD, YYYY');
+		});
+		$('.time-format-dt').html(function() {
+			return moment($(this).html(), 'YYYY-MM-DD HH:mm:ss').fromNow();
+		});
+
+
+	</script>
 
 	@yield('scripts')
 

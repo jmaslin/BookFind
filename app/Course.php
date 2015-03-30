@@ -23,5 +23,10 @@ class Course extends Model {
 			return $this->hasMany('Bookfind\Book', 'course_id');
 	}
 
+	public function students()
+	{
+			return $this->hasMany('Bookfind\User_Course', 'course_id');
+	}
+
 
 }

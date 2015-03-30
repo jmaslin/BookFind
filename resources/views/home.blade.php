@@ -4,11 +4,13 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-10 col-md-offset-1">
-			<div class="panel panel-default">
-				<div class="panel-heading">Home</div>
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<h1>Welcome to <strong>Bookfind!</strong></h1>
+				</div>
 
 				<div class="panel-body">
-					You are logged in, {{ Auth::user()->name }}
+					So how's your day going?
 				</div>
 			</div>
 		</div>

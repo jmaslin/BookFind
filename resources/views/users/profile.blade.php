@@ -26,88 +26,15 @@
 
 					<div class="tab-content row">
 						<!-- Courses -->
-						<div role="tabpanel" id="courses" class="tab-pane fade in active">
-							<div class="col-sm-6 col-sm-offset-3">
-								<ul class="nav nav-pills nav-justified">
-									<li role="presentation" class="active"><a href="#active">Active</a></li>
-									<li role="presentation"><a href="#active">Archived</a></li>
-								</ul>
-								<br>
-							</div>
-							<div class="col-sm-6">
-								<h2>Active Courses</h2>
-									<div id="courses-list" class="list-group">
-									@if (!$user->courses->count())
-								  	<a href="#" class="list-group-item list-group-item-info">You have not added any courses!</a>
-									@else
-										@foreach($user->courses as $course)
-											<a href="#course{{ $course->info->id }}" data-target="{{ route('schools.courses.show', [$user->school->id, $course->info->id]) }}" data-books-available="{{ $course->info->books->count() }}" class="list-group-item">
-												{{ $course->info->name }} <span class="badge">{{ $course->info->shortcode }}</span>
-											</a>
-										@endforeach
-											<a href="#" class="list-group-item">
-												<div class="input-group">
-													<input name="course" type="text" class="form-control" placeholder="Class Name">
-													<span class="input-group-btn"><button type="submit" class="btn btn-success">Add</button></span>
-												</div>
-											</a>
-									@endif
-								</div>
-							</div>
-							<div class="col-sm-4 col-sm-offset-1">
-								<h2>Course Details</h2>
-
-								<div class="panel panel-info">
-									<div class="panel panel-heading">
-										<span id="course-title">No Course Selected</span>
-									</div>
-									<div class="panel-body">
-											<p id="course-info">
-												<span data-first="1" id="course-info-pretext">Choose a course to display its information.</span>
-												<span id="course-books-status"></span>
-											</p>
-											<div id="course-btn-group">
-												<a id="course-home" href="#" class="btn btn-info btn-block" role="button">Course Homepage</a>											
-												<a id="course-archive" href="#" class="btn btn-warning btn-block" role="button">Archive Course</a>
-											</div>
-									</div>
-								</div>
-							</div>
+							@include('users/partials/_profile-courses')
 						</div>
 						<!-- Books -->
 						<div role="tabpanel" id="books" class="tab-pane fade">
-							<div class="col-sm-6 col-sm-offset-3">
-								<ul class="nav nav-pills nav-justified">
-									<!-- <li role="presentation" class="active"><a href="#active">Active</a></li> -->
-									<li role="presentation"><a href="#wanted">Wanted</a></li>
-									<li role="presentation"><a href="#uploaded">Uploaded</a></li>
-								</ul>
-							</div>
-							<div class="col-sm-6">
-								<h2>Added Books</h2>
-								<ul id="books-list" class="list-group">
-									@if (!$user->books->count())
-										<li>No Books</li>
-									@else
-										@foreach($user->books as $book)
-											<li class=list-group-item><a href="{{ route('books.show', $book->id) }}">{{ $book->name }}</a></li>
-										@endforeach
-									@endif
-								</ul>
-							</div>
+							@include('users/partials/_profile-books')
 						</div>
 						<!-- Settings -->
 						<div role="tabpanel" id="settings" class="tab-pane fade">
-							<div class="col-sm-6 col-sm-offset-3">
-								<ul class="nav nav-pills nav-justified">
-									<li role="presentation"><a href="#preferences">Preferences</a></li>
-									<li role="presentation"><a href="#account">Information</a></li>
-								</ul>
-							</div>
-							<div class="col-sm-6">								
-								<h2>Preferences</h2>
-
-							</div>
+							@include('users/partials/_profile-settings')
 						</div>
 					</div>
 
@@ -155,8 +82,6 @@
 		else {
 			updateCourseInfo($(this), course);
 		}
-
-
 
 	});
 

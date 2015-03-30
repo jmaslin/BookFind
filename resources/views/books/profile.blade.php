@@ -21,7 +21,7 @@
 					<ul>
 						<li>ISBN: {{ $book->isbn }}</li>
 						<li>Uploaded By: {{ $book->creator->name }}</li>
-						<li>Date: <span id="date">{{ $book->updated_at }}</span></li>
+						<li>Date: <span class="time-format-dt">{{ $book->updated_at }}</span></li>
 						<!-- Preview, Relevant Classes for X School, Rating -->
 					</ul>
 
@@ -44,9 +44,9 @@
 
 <script type="text/javascript">
 		
-	$('#date').html(function() {
-		return moment($(this).html(), 'YYYY-MM-DD HH:mm:ss').format('MMMM DD, YYYY');
-	});
+	// $('#time-format-dt').html(function() {
+	// 	return moment($(this).html(), 'YYYY-MM-DD HH:mm:ss').format('MMMM DD, YYYY');
+	// });
 
 </script>
 
