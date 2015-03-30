@@ -77,7 +77,7 @@ class CoursesController extends Controller {
 	 */
 	public function show($school, $course)
 	{
-		if (Auth::user()->school_id == $school['id'])	
+		if ( (Auth::user()->school_id == $school['id']) && ($course->school->id == $school->id) )
 		{
 			return view('courses.show', ['course' => $course, 'school' => $school]);
 		}
