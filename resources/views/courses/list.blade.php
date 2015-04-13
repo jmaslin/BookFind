@@ -50,7 +50,7 @@
 										</td>
 										<td class="text-center"><span class="time-format-dt">{{ $course->updated_at }}</span></td>
 										<td class="course-btn-group text-center">
-											<a href="{{-- route('schools.courses.show', [$school->id, $course->id]) --}}" class="btn btn-info" role="button">View Course</a>
+											<a href="{{ route('courses.show', [$domain, $course->id]) }}" class="btn btn-info" role="button">View Course</a>
 											<a id="course-archive" href="#" class="btn btn-success" role="button">Join Course</a>
 										</td>
 									</tr>

@@ -30,10 +30,14 @@ Route::controllers([
 Route::group(['domain' => '{school}.bookfind.app'], function()
 {
 
-	Route::get('/', array('school' => '{school}', 
-		'uses' => 'CoursesController@index'));
+	// Route::get('/', array('school' => '{school}', 
+	// 	'uses' => 'CoursesController@index'));
 
 	Route::resource('courses', 'CoursesController');
+
+	// Route::bind('course', function($value, $route) {
+	// 	return Course::find($value)->first();
+	// });
 
 	// Route::get('/', function($school)
 	// {
@@ -64,7 +68,7 @@ Route::get('/', 'HomeController@index');
 // });
 
 
-Route::model('course', 'Bookfind\Course');
+// Route::model('course', 'Bookfind\Course');
 
 // Route::get('/schools/{school}', function($school)
 // {

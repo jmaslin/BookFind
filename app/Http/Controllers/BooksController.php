@@ -11,6 +11,7 @@ use \Bookfind\Course;
 use \Bookfind\School;
 
 use Auth;
+use Session;
 
 use Bookfind\Services\GoogleBooks;
 

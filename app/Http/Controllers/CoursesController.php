@@ -33,11 +33,10 @@ class CoursesController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function index($school)
+	public function index($domain)
 	{
-		$school = School::whereDomain($school.'.edu')->first();
 
-		return view('courses.list', ['school' => $school]);
+		return view('courses.list', ['domain' => $domain, 'school' => Session::get('school')]);
 	}	
 
 	/**
@@ -66,24 +65,28 @@ class CoursesController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($school, $course)
+	public function show($domain, $course)
 	{
+
+		// dd($school);
 		// Todo: fix $school right now ignored cause MemberOfSchool middleware validates school
+		// $school = Session::get('school');
 		$course = Course::find($course);
-		// dd($course->school);
+
 
 		if ($course->school == Session::get('school'))
 		{
+
 			$userCourses = Auth::user()->courses;
 			$hasCourse = False;
 			foreach ($userCourses as $userCourse) {
-				if ($userCourse['id'] == $course['id']) {
+				if ($userCourse['id'] == $course->id) {
 					$hasCourse = True;
 					break;
 				}
 			}
 
-			return view('courses.show', ['course' => $course, 'school' => $school, 'user' => Auth::user(), 'hasCourse' => $hasCourse]);
+			return view('courses.show', ['course' => $course, 'school' => $domain, 'user' => Auth::user(), 'hasCourse' => $hasCourse]);
 		}
 		else
 		{
