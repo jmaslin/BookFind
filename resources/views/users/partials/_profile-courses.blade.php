@@ -1,13 +1,19 @@
 <!-- Courses -->
-<div class="col-sm-6 col-sm-offset-3">
-	<ul class="nav nav-pills nav-justified">
-		<li role="presentation" class="active"><a href="#active">Active</a></li>
-		<li role="presentation"><a href="#active">Archived</a></li>
-	</ul>
-	<br>
-</div>
+@if ($limited == "false")
+	<div class="col-sm-6 col-sm-offset-3">
+		<ul class="nav nav-pills nav-justified">
+			<li role="presentation" class="active"><a href="#active">Active</a></li>
+			<li role="presentation"><a href="#active">Archived</a></li>
+		</ul>
+		<br>
+	</div>
+@endif
 <div class="col-sm-10 col-sm-offset-1">
+@if ($limited == "false")
 	<h2>Courses</h2>
+@else
+	<h2>Your Course Overview</h2>
+@endif
 	<div class="table-responsive">
 		<table class="table table-bordered table-hover">
 			<thead>
@@ -35,7 +41,9 @@
 						<td class="text-center"><span class="time-format-dt">{{ $course->info->updated_at }}</span></td>
 						<td class="course-btn-group text-center">
 							<a href="{{ route('schools.courses.show', [$user->school->id, $course->info->id]) }}" class="btn btn-info" role="button">View Course</a>
+							@if ($limited == "false")
 							<a id="course-archive" href="#" class="btn btn-warning" role="button">Archive</a>
+							@endif
 						</td>
 					</tr>
 				@endforeach

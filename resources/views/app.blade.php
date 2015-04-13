@@ -46,7 +46,7 @@
 				<ul class="nav navbar-nav">
 					<li><a href="{{ url('/') }}">Home</a></li>
 					<!-- <li><a href="{{ url('/schools') }}">School</a></li> -->
-					<li><a href="{{ url('/courses') }}">School Home</a></li>
+					<li><a href="{{ url('/courses') }}">School</a></li>
 					<!-- <li><a href="{{ url('/books') }}">My Books</a></li> -->
 				</ul>
 

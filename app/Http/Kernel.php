@@ -27,6 +27,7 @@ class Kernel extends HttpKernel {
 		'auth' => 'Bookfind\Http\Middleware\Authenticate',
 		'auth.basic' => 'Illuminate\Auth\Middleware\AuthenticateWithBasicAuth',
 		'guest' => 'Bookfind\Http\Middleware\RedirectIfAuthenticated',
+		'school' => 'Bookfind\Http\Middleware\MemberOfSchool',
 	];
 
 }

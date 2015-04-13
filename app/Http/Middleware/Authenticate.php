@@ -30,8 +30,10 @@ class Authenticate {
 	 * @param  \Closure  $next
 	 * @return mixed
 	 */
+
 	public function handle($request, Closure $next)
 	{
+		// If guest, no access
 		if ($this->auth->guest())
 		{
 			if ($request->ajax())
@@ -40,7 +42,7 @@ class Authenticate {
 			}
 			else
 			{
-				return redirect()->guest('auth/login');
+				return redirect()->guest('auth/login'); // Redirect to login page
 			}
 		}
 

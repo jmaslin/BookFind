@@ -11,6 +11,15 @@
 
 				<div class="panel-body">
 
+					<div id="big-btn-group" class="row">
+						<div class="col-sm-4 col-sm-offset-2">
+							<button class="btn btn-success btn-lg btn-block">Add Class</button>
+						</div>
+						<div class="col-sm-4">
+							<button class="btn btn-info btn-lg btn-block">Add Book</button>
+						</div>
+					</div>		
+
 					<div class="table-responsive">
 						<table class="table table-bordered table-hover">
 							<thead>
@@ -41,7 +50,7 @@
 										</td>
 										<td class="text-center"><span class="time-format-dt">{{ $course->updated_at }}</span></td>
 										<td class="course-btn-group text-center">
-											<a href="{{ route('schools.courses.show', [$school->id, $course->id]) }}" class="btn btn-info" role="button">View Course</a>
+											<a href="{{-- route('schools.courses.show', [$school->id, $course->id]) --}}" class="btn btn-info" role="button">View Course</a>
 											<a id="course-archive" href="#" class="btn btn-success" role="button">Join Course</a>
 										</td>
 									</tr>

@@ -64,7 +64,25 @@ To Implement:
  - Feedback for e-mails (live alert if not valid)
  - Alert if first person for school / class (fun)
 
+- Way to see all the books a user from same school has uploaded
+  - Can still keep anonymous
 
+- Ratio of students requesting to no book available
+  - Display on homepage, suggest if able to upload (or email someone who they know has it)
+
+ - Way to add books to the class even if there is no link
+  - Books (name, isbn) -> Book versions (book_id, url)
+
+ - When adding classes, if no book for that class, request they add the isbn/book name ?
+
+ - If another school has same ISBN, list it but say was added by someone outside school
+
+ - Two step feedback process
+   - Step 1: vote up/down
+   - Step 2: choose feedback code - prexisting ("wrong version", "spam", "bad name" "other")
+
+ - Hook into a storage site api (ie. mediafire) so users can upload PDFs
+ 	on their own devices + the site still doesn't have to store it.
 
 Fancy in way, way future: 
 

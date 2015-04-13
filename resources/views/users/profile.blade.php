@@ -27,7 +27,7 @@
 					<div class="tab-content row">
 						<div role="tabpanel" id="courses" class="tab-pane fade in active">
 						<!-- Courses -->
-							@include('users/partials/_profile-courses')
+							@include('users/partials/_profile-courses', ["limited" => "false"])
 						</div>
 						<!-- Books -->
 						<div role="tabpanel" id="books" class="tab-pane fade">

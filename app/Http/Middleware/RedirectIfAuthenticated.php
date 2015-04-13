@@ -33,8 +33,9 @@ class RedirectIfAuthenticated {
 	 */
 	public function handle($request, Closure $next)
 	{
-		if ($this->auth->check())
-		{
+		// If signed in, do this:
+		if ($this->auth->check()) { // Auth::check()
+		
 			return new RedirectResponse(url('/home'));
 		}
 

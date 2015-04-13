@@ -6,7 +6,10 @@
 	"type": "project",
 	"require": {
 		"laravel/framework": "5.0.*",
-		"illuminate/html": "5.*"
+		"illuminate/html": "5.*",
+		"aws/aws-sdk-php-laravel": "~2.0",
+		"doctrine/cache": "~1.4",
+		"google/apiclient": "~1.1"
 	},
 	"require-dev": {
 		"phpunit/phpunit": "~4.0",
@@ -14,7 +17,8 @@
 	},
 	"autoload": {
 		"classmap": [
-			"database"
+			"database",
+      "vendor/google/apiclient/src/Google"
 		],
 		"psr-4": {
 			"Bookfind\\": "app/"

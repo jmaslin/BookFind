@@ -38,7 +38,14 @@ class HomeController extends Controller {
 	 */
 	public function index()
 	{
-		return view('home');
+
+		// if (Auth::user()) {
+		// 	$user = Auth::user();
+		// }
+
+		// return view('home', ['user' => $user]);
+		return view('app');
+
 		// $school = School::find(Auth::user()->school_id);
 		// return redirect()->action('SchoolsController@show', ['school' => $school]);
 	}

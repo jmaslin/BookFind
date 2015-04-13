@@ -10,7 +10,13 @@
 				</div>
 
 				<div class="panel-body">
-					So how's your day going?
+					
+					@if ($user->courses->count() > 0)
+						@include('users/partials/_profile-courses', ["limited" => "true"])
+					@else
+						<p class="lead">You have not added any classes yet. Add some!</p>
+					@endif
+
 				</div>
 			</div>
 		</div>

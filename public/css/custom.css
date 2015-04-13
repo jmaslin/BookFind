@@ -1,3 +1,10 @@
+#big-btn-group button, #big-btn-group a {
+	height: 48px;
+	margin-bottom: 12px;
+	vertical-align: center;
+}
+
+
 /*.navbar-nav li a {
  line-height: 30px;
 }

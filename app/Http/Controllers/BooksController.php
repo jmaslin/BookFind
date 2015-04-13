@@ -3,14 +3,17 @@
 use Bookfind\Http\Requests;
 use Bookfind\Http\Controllers\Controller;
 
-use Illuminate\Http\Request;
-// use Request;
+// use Illuminate\Http\Request;
+use Request;
 
 use \Bookfind\Book;
 use \Bookfind\Course;
 use \Bookfind\School;
 
 use Auth;
+
+use Bookfind\Services\GoogleBooks;
+
 
 class BooksController extends Controller {
 
@@ -84,7 +87,13 @@ class BooksController extends Controller {
 	 */
 	public function show(School $school, Course $course, Book $book)
 	{
-		// $creator = Book::find($book->id)->creator;
+		$bookSearch = new GoogleBooks;
+
+  	// $results = $bookSearch->get($book['isbn']);
+
+   //  foreach ($results as $item) {
+   //    echo $item['volumeInfo']['title'], "<br /> \n";
+   //  }
 
 		return view('books.profile', ['book' => $book]);
 	}
@@ -129,6 +138,42 @@ class BooksController extends Controller {
 	public function destroy($id)
 	{
 		//
+	}
+
+	public function searchBooks()
+	{
+		$searchParam = Request::input('search');
+
+		// for AJAX search requests when selecting book
+		$bookSearch = new GoogleBooks;
+
+   	$opt_params = array(
+      'alt' => "json"
+    );
+
+    $bookSearch->results = $bookSearch->get($searchParam, $opt_params);
+
+    // $newResults = array();
+
+    // foreach ($results['modelData']['items'] as $item) {
+    // 	array_push($newResults, $item);
+
+    // 	// $newResults[] = array_values($item['volumeInfo']);
+
+    // }	
+
+    // echo gettype($results);
+
+    // echo var_dump($bookSearch->results);
+    $serial = serialize($bookSearch->results);
+    echo $serial;
+
+
+
+    // echo json_encode($results['modelData']['items'][0], JSON_PRETTY_PRINT);
+
+    // echo json_encode($newResults, JSON_PRETTY_PRINT);
+
 	}
 
 }

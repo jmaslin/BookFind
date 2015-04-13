@@ -26,7 +26,7 @@ return [
 	|
 	*/
 
-	'url' => 'http://bookfind.dev',
+	'url' => 'http://bookfind.app',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -146,6 +146,7 @@ return [
 		'Bookfind\Providers\RouteServiceProvider',
 
 		'Illuminate\Html\HtmlServiceProvider',
+    'Aws\Laravel\AwsServiceProvider',
 
 	],
 
@@ -196,6 +197,7 @@ return [
 		'View'      => 'Illuminate\Support\Facades\View',
 		'Form'=> 'Illuminate\Html\FormFacade', 
 		'HTML'=> 'Illuminate\Html\HtmlFacade',
+		'AWS' => 'Aws\Laravel\AwsFacade',
 
 	],
 

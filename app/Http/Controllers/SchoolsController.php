@@ -19,8 +19,8 @@ class SchoolsController extends Controller {
 	 */
 	public function __construct()
 	{
-		$this->middleware('auth');
-
+		$this->middleware('auth'); // Can specify only or except 
+		$this->middleware('school'); // Make sure user is member of school (subdomain)
 	}
 	
 	/**
@@ -29,19 +29,11 @@ class SchoolsController extends Controller {
 	 * @return Response
 	 */
 
-	public function index()
-	{
-		if (isProper())
-		{
-			$schools = School::all();
-			return view('schools.list', ['schools' => $schools]);
-		}
-		else {
-			$school = School::find(Auth::user()->school_id);
-			return redirect()->action('SchoolsController@show', ['school' => $school]);
-		}
-		// else
-		// 	return redirect()->action('HomeController@auth');
+	public function index($school)
+	{	
+		// $school = School::whereDomain($school.'.edu')->first();
+
+		// return redirect()->action('CoursesController@index', ['school' => $school]);
 	}
 
 	/**
@@ -71,19 +63,9 @@ class SchoolsController extends Controller {
 	 * @return Response
 	 */
 	public function show(School $school)
-	{
+	{	
 
-		if (School::where('id', '=', $school['id'])->first() == null) 
-		{
-			abort(404);
-		}
-		else if (Auth::user()->school_id == $school->id)
-		{
 			return view('schools.profile', ['school' => $school]);
-		}
-		else
-			return redirect()->action('HomeController@auth');		
-
 	}
 
 	/**
@@ -119,16 +101,4 @@ class SchoolsController extends Controller {
 		//
 	}
 
-}
-
-function isProper() 
-{
-	if ( Auth::user()->user_type_id == '100')
-	{
-		return true;
-	}
-	else
-	{
-		return false;
-	}
 }

@@ -6,8 +6,10 @@ use Bookfind\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use \Bookfind\School;
-use Auth;
+use \Bookfind\Course;
 
+use Auth;
+use Session;
 
 class CoursesController extends Controller {
 
@@ -20,6 +22,7 @@ class CoursesController extends Controller {
 	public function __construct()
 	{
 		$this->middleware('auth');
+		$this->middleware('school');
 
 		// todo: auth each request with user school id?
 	}
@@ -32,22 +35,10 @@ class CoursesController extends Controller {
 	 */
 	public function index($school)
 	{
-		// user is a member of this school
-		if (Auth::user()->school_id == $school['id'])	
-		{
-			return view('courses.list', ['school' => $school]);
-		}
-		else
-			return redirect()->action('HomeController@auth');	
-
-	}	
-
-	public function showCourses()
-	{
-		$school = School::find(Auth::user()->school_id);
+		$school = School::whereDomain($school.'.edu')->first();
 
 		return view('courses.list', ['school' => $school]);
-	}
+	}	
 
 	/**
 	 * Show the form for creating a new resource.
@@ -77,12 +68,27 @@ class CoursesController extends Controller {
 	 */
 	public function show($school, $course)
 	{
-		if ( (Auth::user()->school_id == $school['id']) && ($course->school->id == $school->id) )
+		// Todo: fix $school right now ignored cause MemberOfSchool middleware validates school
+		$course = Course::find($course);
+		// dd($course->school);
+
+		if ($course->school == Session::get('school'))
 		{
-			return view('courses.show', ['course' => $course, 'school' => $school]);
+			$userCourses = Auth::user()->courses;
+			$hasCourse = False;
+			foreach ($userCourses as $userCourse) {
+				if ($userCourse['id'] == $course['id']) {
+					$hasCourse = True;
+					break;
+				}
+			}
+
+			return view('courses.show', ['course' => $course, 'school' => $school, 'user' => Auth::user(), 'hasCourse' => $hasCourse]);
 		}
 		else
-			return redirect()->action('HomeController@auth');	
+		{
+			return redirect()->action('HomeController@index');	
+		}
 	}
 
 	/**
