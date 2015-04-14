@@ -86,7 +86,7 @@ class CoursesController extends Controller {
 				}
 			}
 
-			return view('courses.show', ['course' => $course, 'school' => $domain, 'user' => Auth::user(), 'hasCourse' => $hasCourse]);
+			return view('courses.show', ['course' => $course, 'domain' => $domain, 'user' => Auth::user(), 'hasCourse' => $hasCourse]);
 		}
 		else
 		{

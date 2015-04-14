@@ -34,6 +34,7 @@ Route::group(['domain' => '{school}.bookfind.app'], function()
 	// 	'uses' => 'CoursesController@index'));
 
 	Route::resource('courses', 'CoursesController');
+	Route::resource('courses.books', 'BooksController');
 
 	// Route::bind('course', function($value, $route) {
 	// 	return Course::find($value)->first();

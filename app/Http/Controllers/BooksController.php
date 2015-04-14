@@ -34,19 +34,14 @@ class BooksController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function index($domain)
 	{
-		if (isProperSchool())
-		{
-			$books = Book::all(); // Temporary
-		}
-		else
-		{
-			$school = School::find(Auth::user()->school_id);
-			$books = $school->books;	
-		}
-		// return view('books.list', ['books' => $books]);
-		return redirect()->action('CoursesController@index', ['school' => $school]);
+
+		// dd($domain);
+		// $school = School::find(Auth::user()->school_id);
+		// $books = $school->books;	
+		
+		return redirect()->action('CoursesController@index', $domain);
 	}
 
 	/**
@@ -86,17 +81,22 @@ class BooksController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show(School $school, Course $course, Book $book)
+	public function show($domain, $course, $book)
 	{
+		$book = Book::find($book);
+
+
+		if ($book->course->id == $course) {
+			return view('books.profile', ['book' => $book]);
+		} else {
+			return error('404');
+		}
+
+		// Need to make sure book part of valid school/course for user auth'd (middleware)
+
 		$bookSearch = new GoogleBooks;
 
-  	// $results = $bookSearch->get($book['isbn']);
 
-   //  foreach ($results as $item) {
-   //    echo $item['volumeInfo']['title'], "<br /> \n";
-   //  }
-
-		return view('books.profile', ['book' => $book]);
 	}
 
 	/**
