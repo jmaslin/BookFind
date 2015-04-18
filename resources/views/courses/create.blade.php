@@ -5,7 +5,7 @@
 	<div class="row">
 		<div class="col-md-10 col-md-offset-1">
 			<div class="panel panel-default">
-				<div class="panel-heading">New Book</div>
+				<div class="panel-heading">Add Course</div>
 				<div class="panel-body">
 				@if (count($errors) > 0)
 					<div class="alert alert-danger">
@@ -17,10 +17,10 @@
 						</ul>
 					</div>
 				@endif
-				
-					{!! Form::open(['class' => 'form_horizontal', 'route' => array('courses.books.store', $domain, $course, $book->id) ]) !!}
 
-						@include('books/partials/_form', ['buttonText' => 'Add'])
+					{!! Form::open(['class' => 'form_horizontal', 'route' => array('courses.store', $domain, $school) ]) !!}
+
+						@include('courses/partials/_form', ['buttonText' => 'Add'])
 
 					{!! Form::close() !!}
 

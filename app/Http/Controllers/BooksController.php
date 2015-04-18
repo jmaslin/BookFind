@@ -50,11 +50,11 @@ class BooksController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function create()
+	public function create($domain, $course)
 	{	
 		$book = new Book;
 
-		return view('books.create', ['book' => $book]);
+		return view('books.create', ['book' => $book, 'course' => $course, 'domain' => $domain]);
 	}
 
 	/**
@@ -62,14 +62,15 @@ class BooksController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store(Requests\StoreBookPostRequest $request) 
+	public function store(Requests\StoreBookPostRequest $request, $domain, $courseId) 
 	{	
 
 		$book = Book::create([
 			'name' => ucwords($request->input('name')),
 			'isbn' => $request->input('isbn'),
 			'url' => $request->input('url'),
-			'uploader_id' => Auth::user()->id
+			'uploader_id' => Auth::user()->id,
+			'course_id' => $courseId
 		]);
 
 		return view('books.profile', ['book' => $book, 'new' => 'true']);

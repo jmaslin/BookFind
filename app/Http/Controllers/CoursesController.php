@@ -23,6 +23,7 @@ class CoursesController extends Controller {
 	{
 		$this->middleware('auth');
 		$this->middleware('school');
+		$this->school = Session::get('school');
 
 		// todo: auth each request with user school id?
 	}
@@ -44,9 +45,11 @@ class CoursesController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function create()
-	{
-		//
+	public function create($domain)
+	{	
+		$course = new Course;
+
+		return view('courses.create', ['course' => $course, 'domain' => $domain, 'school' => $this->school->id]);
 	}
 
 	/**
@@ -54,9 +57,20 @@ class CoursesController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(Request $request, $domain) 
 	{
-		//
+		$course = Course::create([
+			'name' => ucwords($request->input('name')),
+			'shortcode' => $request->input('shortcode'),
+			'school_id' => Session::get('school')->id
+		]);
+
+		$course = Course::findOrFail($course->id);
+		// dd($course->name);
+		// dd($course->id);
+		// return redirect()->action('CoursesController@show', $domain, $course->id);
+
+		return view('courses.show', ['course' => $course, 'domain' => $domain, 'new' => 'true', 'hasCourse' => False]);
 	}
 
 	/**
@@ -72,7 +86,6 @@ class CoursesController extends Controller {
 		// Todo: fix $school right now ignored cause MemberOfSchool middleware validates school
 		// $school = Session::get('school');
 		$course = Course::find($course);
-
 
 		if ($course->school == Session::get('school'))
 		{

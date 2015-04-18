@@ -13,6 +13,13 @@
 				</div>
 
 				<div class="panel-body">
+
+					@if (isset($new))
+					<div class="alert alert-success">
+						<p class="lead"><strong>Woo!</strong> A new course was added.</p>
+					</div>
+					@endif
+
 					<div class="col-sm-10 col-sm-offset-1">
 
 						<div class="row">
@@ -23,7 +30,7 @@
 								<hr style="margin-top: -10px;">
 							</div>
 							<div class="col-sm-6 col-sm-offset-6 text-right">
-								<button class="btn btn-success" style="margin-top: -20px;">Add Book</button>
+								<a href="{{ route('courses.books.create', [$domain, $course->id]) }}" role="button" class="btn btn-success" style="margin-top: -20px;">Add Book</a>
 								@if (!$hasCourse) 
 									<button class="btn btn-info" style="margin-top: -20px;">Join Course</button>
 								@else

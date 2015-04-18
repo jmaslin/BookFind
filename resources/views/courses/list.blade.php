@@ -13,7 +13,7 @@
 
 					<div id="big-btn-group" class="row">
 						<div class="col-sm-4 col-sm-offset-2">
-							<button class="btn btn-success btn-lg btn-block">Add Class</button>
+							<a href="{{ route('courses.create', [$domain]) }}" role="button" class="btn btn-success btn-lg btn-block">Add Course</a>
 						</div>
 						<div class="col-sm-4">
 							<button class="btn btn-info btn-lg btn-block">Add Book</button>

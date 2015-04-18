@@ -35,6 +35,9 @@ Route::group(['domain' => '{school}.bookfind.app'], function()
 	// Route::get('/', array('school' => '{school}', 
 	// 	'uses' => 'CoursesController@index'));
 
+	Route::get('/', 'CoursesController@index');
+	
+
 	Route::resource('courses', 'CoursesController');
 	Route::resource('courses.books', 'BooksController');
 
