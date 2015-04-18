@@ -9,7 +9,7 @@
 
 				<div class="panel-body">
 
-					{!! Form::model($book, ['class' => 'form_horizontal', 'method' => 'PATCH', 'route' => ['books.update', $book->id] ]) !!}
+					{!! Form::model($book, array('method' => 'PUT', 'class' => 'form_horizontal', 'route' => array('courses.books.update', $domain, $book->course->id, $book->id)) ) !!}
 
 						@include('books/partials/_form', ['buttonText' => 'Edit'])
 

@@ -10,7 +10,7 @@
 				<div class="panel-heading">
 					<div class="row">
 					  <div class="col-sm-8"><h2>{{ $book->name }}</h2></div>
-    				<div class="col-sm-4"><span class="text-right"><h4>{{ $book->course->name }}</h4></span></div>
+    				<div class="col-sm-4"><span class="text-right"><h4>Go Back -> <a href="#" style="color: inherit;">{{ $book->course->name }}</a></h4></span></div>
 					</div>
 				</div>
 

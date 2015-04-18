@@ -29,7 +29,9 @@ Route::controllers([
 
 Route::group(['domain' => '{school}.bookfind.app'], function()
 {
-
+	// Route::bind('domain', function($value, $route) {
+	// 	return Session::get('school');
+	// });
 	// Route::get('/', array('school' => '{school}', 
 	// 	'uses' => 'CoursesController@index'));
 
@@ -59,6 +61,7 @@ Route::group(['domain' => '{school}.bookfind.app'], function()
 
 // Route::get('/', 'WelcomeController@index');
 Route::get('/', 'HomeController@index');
+
 
 // Route::model('school', 'Bookfind\School');
 

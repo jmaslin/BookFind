@@ -26,6 +26,7 @@ class BooksController extends Controller {
 	public function __construct()
 	{
 		$this->middleware('auth');
+		$this->school = Session::get('school');
 
 	}
 
@@ -106,11 +107,17 @@ class BooksController extends Controller {
 	 * @return Response
 	 */
 
-	public function edit(Book $book)
+	public function edit($domain, $courseId, $bookId)
 	{
-		$book = Book::findOrFail($book->id);
+		$course = Course::findOrFail($courseId);
+		$book = Book::findOrFail($bookId);
 
-		return view('books.edit', ['book' => $book]);
+		if ($book->course == $course && $book->course->school == $this->school) {
+			return view('books.edit', ['book' => $book, 'domain' => $domain]);		
+		} else {
+			dd("Invalid request.");
+		}
+
 	}
 
 
@@ -120,9 +127,9 @@ class BooksController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update(Book $book)
-	{
-		$book = Book::findOrFail($book->id);
+	public function update($school, $courseId, $bookId)
+	{	
+		$book = Book::findOrFail($bookId);
 
 		$book->fill(Request::all());
 		$book->save();
