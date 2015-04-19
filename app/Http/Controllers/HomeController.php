@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use \Bookfind\School;
 use Auth;
+use Session;
 
 class HomeController extends Controller {
 
@@ -38,13 +39,22 @@ class HomeController extends Controller {
 	 */
 	public function index()
 	{
+		$domain = "";
 
-		// if (Auth::user()) {
+		if ( Session::get('school') !== null ) {	
+
+			$domain = str_replace(".edu", "", Session::get('school')->domain);
+
+		} else {
+			$domain = str_replace(".edu", "", Auth::user()->school->domain);
+		}
+	
+		return view('app', ['domain' => $domain]);
+
+		// if (Auth::user()) { 
 		// 	$user = Auth::user();
 		// }
-
 		// return view('home', ['user' => $user]);
-		return view('app');
 
 		// $school = School::find(Auth::user()->school_id);
 		// return redirect()->action('SchoolsController@show', ['school' => $school]);
