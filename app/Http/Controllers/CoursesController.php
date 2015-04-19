@@ -49,7 +49,7 @@ class CoursesController extends Controller {
 	{	
 		$course = new Course;
 
-		return view('courses.create', ['course' => $course, 'domain' => $domain, 'school' => $this->school->id]);
+		return view('courses.create', ['course' => $course, 'domain' => $domain, 'school' => $this->school]);
 	}
 
 	/**

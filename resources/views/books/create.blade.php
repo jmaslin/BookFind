@@ -4,8 +4,13 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-10 col-md-offset-1">
-			<div class="panel panel-default">
-				<div class="panel-heading">New Book</div>
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+				  <div class="row">
+    				<div class="col-sm-6"><h1>Add Book</h1></div>
+    				<div class="col-sm-6"><span class="text-right"><h4>{{ $school->name }}</h4></span></div>
+ 				 	</div>
+				</div>
 				<div class="panel-body">
 				@if (count($errors) > 0)
 					<div class="alert alert-danger">

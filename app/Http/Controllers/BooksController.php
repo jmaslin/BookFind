@@ -54,7 +54,8 @@ class BooksController extends Controller {
 	{	
 		$book = new Book;
 
-		return view('books.create', ['book' => $book, 'course' => $course, 'domain' => $domain]);
+
+		return view('books.create', ['book' => $book, 'course' => $course, 'domain' => $domain, 'school' => Session::get('school')]);
 	}
 
 	/**
