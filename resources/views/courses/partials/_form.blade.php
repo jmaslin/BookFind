@@ -1,20 +1,30 @@
-<div class="form-group">
-	{!! Form::label('name', 'Course Name', array("class" => "col-md-4 control-label")) !!}
-	<div class="col-md-6">
+<div class="form-group row">
+	{!! Form::label('name', 'Course Name', array("class" => "col-sm-4 control-label")) !!}
+	<div class="col-sm-6">
 		{!! Form::text('name', null, 
-			array('placeholder' => 'Ex. Introduction to Business', 'class' => 'form-control') ) !!}
+			array('placeholder' => 'Introduction to Business', 'class' => 'form-control') ) !!}
 	</div>
 </div>
 
-<div class="form-group">
-	{!! Form::label('shortcode', 'Shortcode', array("class" => "col-md-4 control-label")) !!}
-	<div class="col-md-6">							
+<div class="form-group row">
+	{!! Form::label('shortcode', 'Shortcode', array("class" => "col-sm-4 control-label")) !!}
+	<div class="col-sm-6">							
 		{!! Form::text('shortcode', null, 
-			array('placeholder' => 'Ex. BUSN 101', 'class' => 'form-control') ) !!}
+			array('placeholder' => 'BUSN 101', 'class' => 'form-control') ) !!}
 	</div>
 </div>
 
-<div class="form-group">
-	{!! Form::submit(isset($buttonText) ? $buttonText.' Course' : 'Submit Course',
-		array('class' => 'btn btn-primary') ) !!}
+<div class="form-group row">
+	{!! Form::label('reference_number', 'Course Reference Number (CRN)', array("class" => "col-sm-4 control-label")) !!}
+	<div class="col-sm-6">							
+		{!! Form::text('reference_number', null, 
+			array('placeholder' => '123456', 'class' => 'form-control') ) !!}
+	</div>
+</div>
+
+<div class="form-group row">
+	<div class="col-sm-6">
+		{!! Form::submit(isset($buttonText) ? $buttonText.' Course' : 'Submit Course',
+			array('class' => 'btn btn-primary') ) !!}
+	</div>
 </div>

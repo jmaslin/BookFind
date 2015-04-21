@@ -57,11 +57,12 @@ class CoursesController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store(Request $request, $domain) 
+	public function store(Requests\StoreCoursePostRequest $request, $domain) 
 	{
 		$course = Course::create([
 			'name' => ucwords($request->input('name')),
 			'shortcode' => $request->input('shortcode'),
+			'reference_number' => $request->input('reference_number'),
 			'school_id' => Session::get('school')->id
 		]);
 

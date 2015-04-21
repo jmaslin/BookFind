@@ -16,7 +16,7 @@ class Course extends Model {
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['name', 'shortcode', 'school_id'];
+	protected $fillable = ['name', 'shortcode', 'school_id', 'reference_number'];
 
 	public function books()
 	{

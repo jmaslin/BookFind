@@ -52,6 +52,9 @@ class BooksController extends Controller {
 	 */
 	public function create($domain, $course)
 	{	
+
+		$course = Course::findOrFail($course);
+
 		$book = new Book;
 
 
@@ -67,7 +70,7 @@ class BooksController extends Controller {
 	{	
 
 		$book = Book::create([
-			'name' => ucwords($request->input('name')),
+			'name' => ucwords($request->input('title')),
 			'isbn' => $request->input('isbn'),
 			'url' => $request->input('url'),
 			'uploader_id' => Auth::user()->id,

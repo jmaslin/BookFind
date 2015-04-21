@@ -2,7 +2,7 @@
 
 use Bookfind\Http\Requests\Request;
 
-class StoreBookPostRequest extends Request {
+class StoreCoursePostRequest extends Request {
 
 	/**
 	 * Determine if the user is authorized to make this request.
@@ -11,11 +11,9 @@ class StoreBookPostRequest extends Request {
 	 */
 	public function authorize()
 	{
+		// todo: error check if valid info?
 
-		// todo: error check if valid link, isbn, name
-
-		return true;
-	}
+		return true;	}
 
 	/**
 	 * Get the validation rules that apply to the request.
@@ -25,9 +23,9 @@ class StoreBookPostRequest extends Request {
 	public function rules()
 	{
 		return [
-			'title' => 'required|max:128',
-			'isbn' => 'min:10|max:20',
-			'url' => 'optional|url',
+			'name' => 'required|max:128',
+			'shortcode' => 'required|max:10',
+			'crn' => 'optional',
 		];
 	}
 

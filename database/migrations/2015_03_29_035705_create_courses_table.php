@@ -17,6 +17,7 @@ class CreateCoursesTable extends Migration {
 			$table->increments('id');
 			$table->string('name');
 			$table->string('shortcode');
+			$table->string('reference_number');
 			$table->string('school_id');
 			$table->string('instructor_link');
 			$table->timestamps();

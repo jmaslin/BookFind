@@ -8,7 +8,7 @@
 				<div class="panel-heading">
 				  <div class="row">
     				<div class="col-sm-6"><h1>Add Book</h1></div>
-    				<div class="col-sm-6"><span class="text-right"><h4>{{ $school->name }}</h4></span></div>
+    				<div class="col-sm-6"><span class="text-right"><h4><a style="color: white;" href="{{ route('courses.show', [$domain, $course->id]) }}">{{ $course->name }}</a></h4></span></div>
  				 	</div>
 				</div>
 				<div class="panel-body">

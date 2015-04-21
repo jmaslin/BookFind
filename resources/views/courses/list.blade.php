@@ -16,7 +16,7 @@
 							<a href="{{ route('courses.create', [$domain]) }}" role="button" class="btn btn-success btn-lg btn-block">Add Course</a>
 						</div>
 						<div class="col-sm-4">
-							<button class="btn btn-info btn-lg btn-block">Add Book</button>
+							<a href="#" role="button" disabled class="btn btn-info btn-lg btn-block">Add Book</a>
 						</div>
 					</div>		
 
